@@ -2,10 +2,35 @@
 <html><head><script defer src="main.js"></script></head>
   <head>
     <meta charset="utf-8">
-    <title>App</title>
+    <title>GangBang studio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <body>
-    <span class="down" id="output"></span>
-    <span class="up">ch : min : sec : ms</span>
+    <div class="calc">
+      <input id="output" type="text" class="calc__inp" readonly>
+      <nav class="calc__computing">
+        <button>+</button>
+        <button>-</button>
+        <button>&times;</button>
+        <button>&divide;</button> 
+      </nav>
+      <div class="calc__digits_noZero">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>  
+      </div>
+      <nav class="calc__panel_zero">
+        <button>0</button>
+        <button>.</button>
+        <button>C</button>  
+      </nav>
+      <button id="solver" class="calc__eq">=</button>
+    </div>
   </body>
 </html>
+
