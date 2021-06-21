@@ -1,21 +1,26 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: './index.js',
-  module: {
-    rules: [
-      { test: /\.svg$/, use: 'svg-inline-loader' },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
-      { test: /\.(js)$/, use: 'babel-loader' }
-    ]
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
-  },
-  plugins: [
-    new HtmlWebpackPlugin(),
-  ],
-  mode: 'development',
-}
+    entry: './src/index.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    plugins: [new HtmlWebpackPlugin({
+        template: './src/index.html'
+    })],
+    mode: "development",
+    devServer:{
+        contentBase: './dist',
+        port: 1337, 
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
+        ],
+    },
+};
