@@ -3,3 +3,17 @@ body
     margin: 0;
     padding: 0;
 }
+.root{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.root__adder
+{
+    display: flex;
+    flex-direction: row;
+}
+.todoList
+{
+    display: flex;
+    flex-direction: column;
+}
