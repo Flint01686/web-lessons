@@ -1,26 +1,28 @@
 import "../style/style.css"
-let add = document.getElementById("add");
-let inp = document.getElementById("inp");
-let todo = document.getElementById("todo");
 
-function delItem(e)
-{
-    let item = e.currentTarget.parentNode
-    item.remove();
-}
-let listItemHtml = (text) => `
-        <input type="checkbox">
-        <span>${text}</span>
-        <button>Delete</button>
-        `
-function addList ()
-{
-    const newItem = document.createElement('li')
-    if (!inp.value) return;
-    newItem.innerHTML = listItemHtml(inp.value)
-    newItem.children[2].onclick = delItem;
+let items = Array.from(document.querySelectorAll(".timeline li"))
 
-    todo.appendChild(newItem);
+function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
-add.onclick = addList;
-inp.addEventListener('keydown', (e) => { if (e.code === "Enter") addList(); })
+
+function check() {
+    for (var i = 0; i < items.length; i++) {
+        if (isElementInViewport(items[i])) {
+            items[i].classList.add("in-view");
+            items.splice(i--, 1);
+        }
+    }
+}
+
+// listen for events
+window.addEventListener("load", check);
+window.addEventListener("resize", check);
+window.addEventListener("scroll", check);
