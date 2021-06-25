@@ -141,6 +141,12 @@ time {
   opacity: 1;
 }
 
+li.in-view:hover div:hover
+{
+  font-size: 25px;
+}
+
+
 
 /* GENERAL MEDIA QUERIES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
