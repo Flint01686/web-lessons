@@ -26,7 +26,7 @@ function quiz(title, annotation, questions, output)
         for (let currAns of currAnswers) currAnswersIds.push(currAns.value)
         if (currAnswersIds.length === 0) {alert("Ты ответ то выбери, пожалуйста, ок да?"); return}
         if (lastQuestion) 
-            if (JSON.stringify(lastQuestion.rightAnsIds) === JSON.stringify(currAnswersIds)) 
+            if (JSON.stringify(lastQuestion.rightAnswersIds) === JSON.stringify(currAnswersIds)) 
                 sucess.push(currAnswersIds)
 
         if (questions.length-1 == currentQuestionNum) 
@@ -75,25 +75,25 @@ let questions = [
         type: "radio", 
         text: "Когда родился Полковник Сандерс",
         answers: ["11 сентября 2001 года","9 сентября 1890", "19 сентября 2001 года", "10 сентября 1890"],
-        rightAnsIds: ["2"]
+        rightAnswersIds: ["2"]
     },
     {
         type: "radio", 
         text: "Когда умер Полковник Сандерс",
         answers: ["16 декабря 1980","9 сентября 1990", "25 января 1980", "21 июля 1982"],
-        rightAnsIds: ["1"]
+        rightAnswersIds: ["1"]
     },
     {
         type: "checkbox", 
         text: "Почему Сандерс - полковник?",
         answers: ["Служил во Вьетнаме", "Убирал дерьмо в конюшнях", "Служил на Кубе"],
-        rightAnsIds: ["2","3"]
+        rightAnswersIds: ["2","3"]
     },
     {
         type: "radio", 
         text: "Что лежит у хобицца в карманце",
         answers: ["Ничего"],
-        rightAnsIds: ["1"]
+        rightAnswersIds: ["1"]
     },
 ]
 let output = document.getElementById("root")
