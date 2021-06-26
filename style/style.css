@@ -143,6 +143,7 @@ time {
 
 li.in-view:hover div:hover
 {
+  transition: all 2s ease-out;
   font-size: 25px;
 }
 
@@ -174,7 +175,7 @@ li.in-view:hover div:hover
   .timeline ul li:nth-child(even) div::before {
     left: -15px;
     border-width: 8px 16px 8px 0;
-    border-color: transparent #f45b69 transparent transparent;
+    border-color: transparent black transparent transparent;
   }
 }
 
