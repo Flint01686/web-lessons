@@ -23,18 +23,18 @@ export default function Calculator()
 
     function addToScreenValues(operation)
     {
+        let currentScreenValues = screenValues;
         if (operation === "C") {setScreenValues(""); return;};    
         if (operation === ".")
-            if (isPointDeclared(specialCommands, screenValues.split("").reverse())) return;
+            if (isPointDeclared(specialCommands, currentScreenValues.split("").reverse())) return;
         if (["×","÷","."].includes(operation) && lastOperation() === "")
             return;
         if (specialCommands.includes(lastOperation()) && specialCommands.includes(operation)) 
         {      
             if (operation === ".") return;
-            setScreenValues(prevState => prevState.slice(0, prevState.length - 1) + operation);   
-            return;
+            currentScreenValues= currentScreenValues.slice(0, currentScreenValues.length - 1);   
         } 
-        setScreenValues(prevState => (prevState + operation));
+        setScreenValues(currentScreenValues + operation);
     }
     function submit()
     {
