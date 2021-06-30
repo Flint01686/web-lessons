@@ -34,7 +34,7 @@ export default function Calculator()
             if (operation === ".") return;
             currentScreenValues= currentScreenValues.slice(0, currentScreenValues.length - 1);   
         } 
-        setScreenValues(currentScreenValues + operation);
+        setScreenValues(currentScreenValues.toString() + operation);
     }
     function submit()
     {
