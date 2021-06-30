@@ -18,32 +18,35 @@ export default function Calculator()
             else if (breakers.includes(letter)) return false;
         return false
     }
+    let specialCommands = ["+","-","×","÷","."];
+    let lastOperation = () => screenValues.toString().slice(screenValues.length-1, screenValues.length)
+
     function addToScreenValues(operation)
     {
-        let lastOperation = screenValues.toString().slice(screenValues.length-1, screenValues.length)
-        if (operation === "C") {setScreenValues(""); return;};
-        let specialCommands = ["+","-","×","÷","."];
+        if (operation === "C") {setScreenValues(""); return;};    
         if (operation === ".")
             if (isPointDeclared(specialCommands, screenValues.split("").reverse())) return;
-        if (["×","÷","."].includes(operation) && lastOperation === "")
+        if (["×","÷","."].includes(operation) && lastOperation() === "")
             return;
-        if (specialCommands.includes(lastOperation) && specialCommands.includes(operation)) 
+        if (specialCommands.includes(lastOperation()) && specialCommands.includes(operation)) 
         {      
             if (operation === ".") return;
-            setScreenValues(screenValues.slice(0, screenValues.length - 1)+operation);   
+            setScreenValues(prevState => prevState.slice(0, prevState.length - 1) + operation);   
             return;
         } 
-        setScreenValues(screenValues + operation);
+        setScreenValues(prevState => (prevState + operation));
     }
     function submit()
     {
+        if (specialCommands.includes(lastOperation())) return;
         const value = screenValues.toString().replace("÷","/").replace("×","*")
-        if (screenValues === "") return;
+        if (value === "") return;
         try {
-            setScreenValues(eval(value));
+            let solvingResult = eval(value)
+            setScreenValues(solvingResult);
         } catch (error) {
             console.log(
-                'err', screenValues
+                'err', value
             );
         }
     }
