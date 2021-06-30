@@ -39,7 +39,7 @@ export default function Calculator()
     function submit()
     {
         if (specialCommands.includes(lastOperation())) return;
-        const value = screenValues.toString().replace("÷","/").replace("×","*")
+        const value = screenValues.toString().replaceAll("÷","/").replaceAll("×","*")
         if (value === "") return;
         try {
             let solvingResult = eval(value)
