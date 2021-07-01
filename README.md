@@ -1,3 +1,9 @@
+# Heroku Deploy
+https://react-calculator-sharp.herokuapp.com/
+
+# Netlify Deploy
+https://60dd98151eedc0cfcab2941e--pensive-edison-601696.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
