@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from './Button';
+import Button from '../UI/Button';
 import { CalculatorStyle } from '../style/CalculatorStyle';
 
 export default function Calculator()
@@ -52,21 +52,21 @@ export default function Calculator()
     }
     return (
         <CalculatorStyle>
-            <div class="calc">
-                <div id="output" class="calc__screenValues">{screenValues}</div>
-                <nav class="calc__computing">
+            <div className="calc">
+                <div id="output" className="calc__screenValues">{screenValues}</div>
+                <nav className="calc__computing">
                     {buttons[0].map(val => <Button key={val} action={(e) => 
                         addToScreenValues(val)}>{val}</Button>)}
                 </nav>
-                <div class="calc__digits_noZero">
+                <div className="calc__digits_noZero">
                     {buttons[1].map(val => <Button key={val} action={(e) => 
                         addToScreenValues(val)}>{val}</Button>)}
                 </div>
-                <nav class="calc__panel_zero">
+                <nav className="calc__panel_zero">
                     {buttons[2].map(val => <Button key={val} action={(e) => 
                         addToScreenValues(val)}>{val}</Button>)}
                 </nav>
-                <Button key={"="} class='calc__eq' action={submit}>=</Button>
+                <Button key={"="} className='calc__eq' action={submit}>=</Button>
             </div>
         </CalculatorStyle>
     )
