@@ -27,8 +27,9 @@ export default function Calculator()
         if (operation === "C") {setScreenValues(""); return;};    
         if (operation === ".")
             if (isPointDeclared(specialCommands, currentScreenValues.split("").reverse())) return;
-        if (["×","÷","."].includes(operation) && lastOperation() === "")
-            return;
+        if (["×","÷","."].includes(operation))
+            if ((["-","+"].includes(lastOperation()) && currentScreenValues.length === 1) ||
+                lastOperation() === "") return;
         if (specialCommands.includes(lastOperation()) && specialCommands.includes(operation)) 
         {      
             if (operation === ".") return;

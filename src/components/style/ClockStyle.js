@@ -6,12 +6,13 @@ span{
     color: white;
     margin: auto;
 }
-.root
+.main
 {
     background-color: black;
-    display: flex;
+    display: grid;
     height: 95vh;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     margin: 0;
     padding: 0;
 }

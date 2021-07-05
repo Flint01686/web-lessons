@@ -18,7 +18,6 @@ export default function Timeline()
         }
 
         const observer = new IntersectionObserver((entries, observer) => {
-            console.log('IntersectionObserver', entries);
             // для каждой записи-целевого элемента
             entries.forEach(entry => {
                 // если элемент является наблюдаемым

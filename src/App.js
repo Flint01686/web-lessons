@@ -1,14 +1,18 @@
 import './App.css';
-import Calculator from './components/Calculator/Calculator';
-import Timeline from './components/Timeline/Timeline';
-import Stopwatch from './components/Stopwatch/Stopwatch';
+import { SidebarStyle } from "./components/style/SidebarStyle"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Clock from './components/Clock/Clock';
+import React, { Suspense } from 'react';
+const Calculator = React.lazy(() => import('./components/Calculator/Calculator'));
+const Timeline = React.lazy(() =>  import('./components/Timeline/Timeline'));
+const Stopwatch = React.lazy(() =>  import('./components/Stopwatch/Stopwatch'));
+const Quiz = React.lazy(() =>  import('./components/Quiz/Quiz'))
+const TodoList = React.lazy(() =>  import('./components/TodoList/TodoList'))
+const Clock = React.lazy(() =>  import('./components/Clock/Clock'))
 
 function App() {
   let componentsWithName =[
@@ -32,29 +36,45 @@ function App() {
       path: "/clock",
       source: <Clock />
     },
+    {
+      name: "Quiz",
+      path: "/quiz",
+      source: <Quiz />
+    },
+    {
+      name: "TodoList",
+      path: "/todolist",
+      source: <TodoList />
+    },
   ]
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            {componentsWithName.map(component => (
-              <li key={component.path.replace("/","")}>
-                <Link to={component.path}>{component.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <SidebarStyle>
+      <Router>
+        <div className="root">
+          <nav className="sidebar">
+            <ul>
+              {componentsWithName.map(component => (
+                <li key={component.path.replace("/","")}>
+                  <Link to={component.path}>{component.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <Switch>
-          {componentsWithName.map(component => (
-            <Route key={component.path.replace("/","")} path={component.path}>
-              {component.source}
-            </Route>
-          ))}
-        </Switch>
-      </div>
-    </Router>
+          <div className="content">
+            <Switch>
+              <Suspense fallback={<div>Загрузка...</div>}>
+                {componentsWithName.map(component => (
+                  <Route key={component.path.replace("/","")} path={component.path}>
+                    {component.source}
+                  </Route>
+                ))}
+              </Suspense>
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    </SidebarStyle>
   );
 }
 

@@ -23,7 +23,6 @@ function Timer(setCurrentOutput) {
     };
     this.stop = function()
     {
-        console.log(this);
         clearInterval(this.timerId);
         this.timerId = false;
     };

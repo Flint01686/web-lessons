@@ -9,7 +9,7 @@ export const CalculatorStyle = styled.div`
     .calc
     {
         width: 50vw;
-        height: 70vh;
+        height: 100%;
         display: grid;
         grid-template-areas:"screenValues screenValues screenValues screenValues"
                             "com com com com"

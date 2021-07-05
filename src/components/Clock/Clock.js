@@ -38,7 +38,7 @@ export default function ClockComponent()
 
     return(
         <ClockStyle>
-            <div className="root">
+            <div className="main">
                 <span className="down">{output}</span>
                 <span className="up">hh : min : sec : ms</span>
             </div>
